@@ -5,7 +5,7 @@ const MyContext = React.createContext()
 
 class MyProvider extends Component {
   state = {
-    session: 20,
+    session: 25,
     break : 5,
     isRunning : true,
     reset: true,
@@ -26,7 +26,7 @@ class MyProvider extends Component {
       handleIncrement: () =>{
         if(this.state.gameStart){return false}
         else {
-          if(this.state.session >= 25) return false
+          if(this.state.session >= 60) return false
           else{
             this.setState({
               session : this.state.session + 1
@@ -38,7 +38,7 @@ class MyProvider extends Component {
       handleDecrement : () => {
         if(this.state.gameStart){return false}
         else{
-          if(this.state.session <= 0) return false
+          if(this.state.session <= 1) return false
           else{
             this.setState({
               session : this.state.session - 1
@@ -159,15 +159,19 @@ const Main = () => {
       {
         (context) => {
           return (
-            <React.Fragment>
-              <span id='time-label'>Session</span>
-              <p id='time-left' >{context.state.session}:00</p>
-                <button id='start-stop' onClick={context.showTimer}>start</button>
-              <button id='reset' onClick={context.resetTimer}>Reset</button>
+            <div className='main'>
+              <br /><br />
+              <div className='time-wrap'>
+                <span id='time-label'>Session</span>
+                <p id='time-left' >{context.state.session}:00</p>
+              </div>
+                <br /><br />
+                <button id='start-stop' onClick={context.showTimer}><i className='fa fa-play'></i><i className='fa fa-pause'></i></button>
+              <button id='reset' onClick={context.resetTimer}><i className='fa fa-refresh'></i></button>
                 <audio id="beep" preload="auto"
              src="https://goo.gl/65cBl1"
              />
-            </React.Fragment>
+         </div>
           )
         }
       }
@@ -182,9 +186,15 @@ class App extends Component {
   render() {
     return (<MyProvider>
       <div className="App">
-        <Session />
-        <Break />
-        <Main />
+        <h1>Pomodro Clock</h1><br/><br/>
+        <center>
+          <div className='App-Provider'>
+              <Session />
+              <Break />
+          </div>
+          <br /><br />
+        </center>
+          <Main />
       </div>
     </MyProvider>);
   }

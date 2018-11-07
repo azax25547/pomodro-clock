@@ -1,6 +1,44 @@
+
+@import url('https://fonts.googleapis.com/css?family=Kumar+One+Outline');
+
+body {
+  background-color : #00a3da;
+  font-size: 18px;
+}
 #session {
   display:flex;
 }
 .red-text {
   color: red;
+}
+
+.App-Provider  {
+display: inline-flex;
+grid-gap: 180px;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-Provider button, .main button {
+  padding: 15px;
+  border:0;
+  background:transparent;
+  cursor: pointer;
+}
+
+.main .time-wrap{
+  width: 10%;
+  margin: 0 42%;
+  padding: 40px;
+  border: 3px dotted #333;
+}
+.main .time-wrap {
+  font-size: 35px;
+  font-family: 'Kumar One Outlne', cursive;
+  text-transform: uppercase;
+}
+
+.main .time-wrap #time-label {
 }
